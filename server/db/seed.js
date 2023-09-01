@@ -8,9 +8,9 @@ const dropTables = async () => {
     console.log("tables dropping!")
     // we are calling upon client connection to make query to db
     await client.query(`
-    DROP TABLE IF EXISTS levels;
     DROP TABLE IF EXISTS tabs;
     DROP TABLE IF EXISTS songs;
+    DROP TABLE IF EXISTS levels;
         `);
     console.log("tables dropped!")
   } catch (error) {
