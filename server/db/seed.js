@@ -2,6 +2,11 @@
 // pulling in connection to my local database
 const client = require("./client");
 
+const { createSong } = require("./helpers/songs")
+// destructuring it so we can pull in each array separately
+const { songs, tabs, levels } = require("./seedData.js");
+
+
 // Drop tables for cleanliness
 const dropTables = async () => {
   try {
@@ -25,17 +30,15 @@ const createTables = async () => {
     await client.query(`
     CREATE TABLE levels (
         level_id SERIAL PRIMARY KEY,
-        Beginner varchar(50),
-        Intermediate varchar(50),
-        Advanced varchar(50)
+        level varchar(50) NOT NULL
 
         
     );
         CREATE TABLE songs (
             song_id SERIAL PRIMARY KEY,
             name varchar(255) NOT NULL,
-            artist varchar(255) NOT NULL,
-            level_id integer REFERENCES levels(level_id) NOT NULL
+            artist varchar(255) NOT NULL
+
         );
         CREATE TABLE tabs (
             tab_id SERIAL PRIMARY KEY,
@@ -50,6 +53,18 @@ const createTables = async () => {
 };
 
 // insert mock data from seedData.js
+const createInitialSongs = async () => {
+    try {
+    // Looping through the "songs" array from seedData
+        for (const song of songs) {
+            // Insert each song into the table
+            await createSong(song)
+        }
+    } catch (error) {
+        throw error
+    }
+}
+
 
 // call all da functions and 'BUILD' the database
 const rebuildDb = async () => {
@@ -59,6 +74,9 @@ const rebuildDb = async () => {
     // run functions
     await dropTables();
     await createTables();
+
+    // Generate the data 
+    await createInitialSongs();
   } catch (error) {
     console.error(error);
   } finally {

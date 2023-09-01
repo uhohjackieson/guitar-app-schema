@@ -9,17 +9,17 @@
 
 // level
 const levels = [
-    "Beginner",
-    "Intermediate",
-    "Advanced"
+    {level: "Beginner"},
+    {level: "Intermediate"},
+    {level: "Advanced"}
 ]
 
 // songs/solos
 const songs = [
-    {name: 'Smells Like Teen Spirit', artist: 'Nirvana', level_id: 1},
-    {name: 'Californication', artist: 'Red Hot Chili Peppers', level_id: 1},
-    {name: 'While My Guitar Gently Weeps', artist: 'The Beatles', level_id: 1},    
-    {name: 'Through the Fire and the Flames', artist: 'Dragonforce', level_id: 3}
+    {name: 'Smells Like Teen Spirit', artist: 'Nirvana'},
+    {name: 'Californication', artist: 'Red Hot Chili Peppers'},
+    {name: 'While My Guitar Gently Weeps', artist: 'The Beatles'},    
+    {name: 'Through the Fire and the Flames', artist: 'Dragonforce'}
 ]
 
 const tabs = [
@@ -31,4 +31,4 @@ const tabs = [
 ]
 
 
-module.exports = { levels, songs, tabs }
+module.exports = { songs, levels, tabs }
