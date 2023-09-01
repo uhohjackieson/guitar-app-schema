@@ -31,4 +31,4 @@ const tabs = [
 ]
 
 
-module.exports = { levels, songs, tabs}
+module.exports = { levels, songs, tabs }

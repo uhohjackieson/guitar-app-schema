@@ -5,14 +5,14 @@ const client = require("./client");
 // Drop tables for cleanliness
 const dropTables = async () => {
   try {
-    console.log("tables dropping!");
+    console.log("tables dropping!")
     // we are calling upon client connection to make query to db
     await client.query(`
-        DROP TABLE IF EXISTS songs;
-        DROP TABLE IF EXISTS levels;
-        DROP TABLE IF EXISTS tabs;
+    DROP TABLE IF EXISTS levels;
+    DROP TABLE IF EXISTS tabs;
+    DROP TABLE IF EXISTS songs;
         `);
-    console.log("tables dropped!");
+    console.log("tables dropped!")
   } catch (error) {
     throw error;
   }
