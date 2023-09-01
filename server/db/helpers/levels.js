@@ -1,9 +1,20 @@
-// const client = ('../client')
+const client = require('../client')
 
-// const createLevels = async ({ level }) => {
-//     const {
-//         rows:[level]
-//     } = await client.query(`
+const createLevel = async ({ level }) => {
+    try{
+    const {
+        rows:[skill_level]
+    } = await client.query(`
+    INSERT INTO levels(level)
+    VALUES($1)
+    RETURNING *;
+    `,
+    [level]
+    );
+    return skill_level;
+} catch(error) {
+    throw error
+}
+}
 
-//     `);
-// }
+module.exports = { createLevel }

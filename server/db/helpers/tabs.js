@@ -1,10 +1,10 @@
-const client = "../client";
+const client = require('../client')
 
-const createTabs = async ({ name, url }) => {
+const createTab = async ({ name, url }) => {
   try {
     const {
       rows: [tab],
-    } = await client.query(
+    } = await client.query (
       `
         INSERT INTO tabs(name, url)
         VALUES($1, $2)
@@ -18,4 +18,4 @@ const createTabs = async ({ name, url }) => {
   }
 };
 
-module.exports = { createTabs }
+module.exports = { createTab }

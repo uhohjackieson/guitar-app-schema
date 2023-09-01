@@ -13,7 +13,7 @@ const createSong = async ({ name, artist}) => {
         RETURNING *;
         `,
         [name, artist]
-        )
+        );
         return song
     } catch(error){
         throw error
