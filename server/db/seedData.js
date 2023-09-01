@@ -8,7 +8,7 @@
 // ]
 
 // level
-const skill_level = [
+const levels = [
     "Beginner",
     "Intermediate",
     "Advanced"
@@ -31,4 +31,4 @@ const tabs = [
 ]
 
 
-module.exports = { skill_level, songs, tabs}
+module.exports = { levels, songs, tabs}
