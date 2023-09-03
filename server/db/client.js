@@ -1,6 +1,5 @@
-const { Client } = require('pg')
+const { Client } = require("pg");
 
-const guitarApp = 'guitarApp'
-const client = new Client(`postgres://localhost:5432/${guitarApp}`)
+const client = new Client(`postgres://localhost:8080/guitarApp`);
 
-module.exports = client
+module.exports = client;

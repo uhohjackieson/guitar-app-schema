@@ -2,9 +2,9 @@
 // pulling in connection to my local database
 const client = require("./client");
 
-const { createSong } = require("./helpers/songs");
+const { createSong, getAllSongs } = require("./helpers/songs");
 const { createTab } = require("./helpers/tabs");
-const { createLevel } = require("./helpers/levels");
+const { createLevel, getLevelById } = require("./helpers/levels");
 // destructuring it so we can pull in each array separately
 const { songs, tabs, levels } = require("./seedData.js");
 
@@ -100,6 +100,9 @@ const rebuildDb = async () => {
     await createInitialSongs();
     await createInitialTabs();
     await createInitialLevels();
+    await getLevelById(2);
+
+    await getAllSongs();
   } catch (error) {
     console.error(error);
   } finally {
