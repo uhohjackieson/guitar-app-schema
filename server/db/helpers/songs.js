@@ -33,4 +33,19 @@ const getAllSongs = async () => {
   }
 };
 
-module.exports = { createSong, getAllSongs };
+const getSongById = async (songId) => {
+  try {
+    const {
+      rows: [songs],
+    } = await client.query(`
+      SELECT * 
+      FROM songs
+      WHERE "songId" = ${songId};
+    `);
+    return songs;
+  } catch (error) {
+    throw error;
+  }
+};
+
+module.exports = { createSong, getAllSongs, getSongById };
