@@ -9,13 +9,8 @@ const client = require("./db/client");
 
 client
   .connect()
-  .then(() => console.log("connected"))
-  .catch((err) => console.error("connection error", err.stack))
-  .then(() =>
-    client.end(() => {
-      console.log("postgres/client disconnected");
-    })
-  );
+  .then(() => console.log("connected"));
+
   
 // init cors
 server.use(cors());

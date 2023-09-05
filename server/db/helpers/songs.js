@@ -22,15 +22,18 @@ const createSong = async ({ name, artist }) => {
 };
 
 const getAllSongs = async () => {
+
   try {
     const { rows } = await client.query(`
         SELECT * FROM songs;
         `);
     console.log(rows);
     return rows;
+    
   } catch (error) {
     throw error;
   }
+  
 };
 
 const getSongById = async (songId) => {
