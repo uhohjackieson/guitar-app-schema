@@ -18,4 +18,15 @@ const createTab = async ({ name, url }) => {
   }
 };
 
-module.exports = { createTab }
+const getAllTabs = async () => {
+  try{
+    const { rows } = await client.query(`
+    SELECT * FROM tabs;
+    `);
+    return rows;
+  } catch(error){
+    throw error;
+  }
+};
+
+module.exports = { createTab, getAllTabs }

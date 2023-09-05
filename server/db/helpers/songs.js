@@ -27,7 +27,7 @@ const getAllSongs = async () => {
     const { rows } = await client.query(`
         SELECT * FROM songs;
         `);
-    console.log(rows);
+    // console.log(rows);
     return rows;
     
   } catch (error) {

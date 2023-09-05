@@ -15,9 +15,10 @@ router.get("/", async (req, res, next) => {
 router.use("/songs", require("./songs"));
 
 // ROUTER: /api/levels
-// router.use("/levels", require("./levels"));
+router.use('/levels', require('./levels'));
 
 // ROUTER: /api/tabs
-// router.use("/tabs", require("./tabs"));
+router.use('/tabs', require('./tabs'));
+
 
 module.exports = router;
