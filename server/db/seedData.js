@@ -9,26 +9,36 @@
 
 // level
 const levels = [
-    {level: "Beginner"},
-    {level: "Intermediate"},
-    {level: "Advanced"}
-]
+  { level: "Beginner" },
+  { level: "Intermediate" },
+  { level: "Advanced" },
+];
 
 // songs/solos
 const songs = [
-    {name: 'Smells Like Teen Spirit', artist: 'Nirvana'},
-    {name: 'Californication', artist: 'Red Hot Chili Peppers'},
-    {name: 'While My Guitar Gently Weeps', artist: 'The Beatles'},    
-    {name: 'Through the Fire and the Flames', artist: 'Dragonforce'}
-]
+  { name: "Smells Like Teen Spirit", artist: "Nirvana" },
+  { name: "Californication", artist: "Red Hot Chili Peppers" },
+  { name: "While My Guitar Gently Weeps", artist: "The Beatles" },
+  { name: "Through the Fire and the Flames", artist: "Dragonforce" },
+];
 
 const tabs = [
-    {name: 'Smells Like Teen Spirit', url: "https://www.youtube.com/watch?v=rac0pIyNCfc"},
-    {name: 'Californication', url: "https://www.youtube.com/watch?v=80hkqmEFSWM"},
-    {name: 'While My Guitar Gently Weeps', url: "https://www.youtube.com/watch?v=4Aebj8zw0hE"},
-    {name: 'Through the Fire and the Flames', url: "https://www.youtube.com/watch?v=7FHnSrb1rHk&list=RD7FHnSrb1rHk&start_radio=1"}
+  {
+    name: "Smells Like Teen Spirit",
+    url: "https://www.youtube.com/watch?v=rac0pIyNCfc",
+  },
+  {
+    name: "Californication",
+    url: "https://www.youtube.com/watch?v=80hkqmEFSWM",
+  },
+  {
+    name: "While My Guitar Gently Weeps",
+    url: "https://www.youtube.com/watch?v=4Aebj8zw0hE",
+  },
+  {
+    name: "Through the Fire and the Flames",
+    url: "https://www.youtube.com/watch?v=7FHnSrb1rHk&list=RD7FHnSrb1rHk&start_radio=1",
+  },
+];
 
-]
-
-
-module.exports = { songs, levels, tabs }
+module.exports = { songs, levels, tabs };

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { createSong, getAllSongs, getSongById } = require("../db/helpers/songs");
+const { createSong, getAllSongs, getSongById, updateSong, deleteSong } = require("../db/helpers/songs");
 
 // GET - /api/songs - get all songs
 router.get("/", async (req, res, next) => {
@@ -43,4 +43,16 @@ router.put("/:songId", async (req, res, next) => {
   }
 });
 
+
+// DELETE - /api/songs/:songId - delete a song
+router.delete("/:id", async (req, res, next) => {
+  try{
+    console.log("entering router delete")
+    const song = await deleteSong(req.params.id);
+    console.log(song)
+    res.send(song);
+  } catch(error) {
+    console.error(error);
+  }
+})
 module.exports = router;

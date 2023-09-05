@@ -22,18 +22,15 @@ const createSong = async ({ name, artist }) => {
 };
 
 const getAllSongs = async () => {
-
   try {
     const { rows } = await client.query(`
         SELECT * FROM songs;
         `);
     // console.log(rows);
     return rows;
-    
   } catch (error) {
     throw error;
   }
-  
 };
 
 const getSongById = async (songId) => {
@@ -51,4 +48,36 @@ const getSongById = async (songId) => {
   }
 };
 
-module.exports = { createSong, getAllSongs, getSongById };
+const deleteSong = async (songId) => {
+  try {
+    console.log("deleting song");
+    const { rows } = await client.query(`
+    DELETE FROM songs
+    WHERE "songId" = ${songId}
+    RETURNING *;
+    `);
+    return rows;
+  } catch (error) {
+    throw error;
+  }
+};
+
+const updateSong = async (songId, body) => {
+  try {
+    const { rows } = await client.query(`
+      UPDATE songs
+      SET name = '${body.name}',
+      artist = '${body.artist}',
+      WHERE "songId" = ${songId}
+      RETURNING *;
+    `);
+    return rows;
+  } catch (error) {}
+};
+module.exports = {
+  createSong,
+  getAllSongs,
+  getSongById,
+  deleteSong,
+  updateSong,
+};
