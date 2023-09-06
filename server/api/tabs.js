@@ -13,4 +13,13 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+// POST - api/tabs - post new tab
+router.post("/", async (req, res, next) => {
+  try {
+    const song = await createTab(req.body);
+    res.send(song);
+  } catch (error) {
+    next(error);
+  }
+});
 module.exports = router;
