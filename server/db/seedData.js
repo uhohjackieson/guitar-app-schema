@@ -16,26 +16,34 @@ const levels = [
 
 // songs/solos
 const songs = [
-  { name: "Smells Like Teen Spirit", artist: "Nirvana" },
-  { name: "Californication", artist: "Red Hot Chili Peppers" },
-  { name: "While My Guitar Gently Weeps", artist: "The Beatles" },
-  { name: "Through the Fire and the Flames", artist: "Dragonforce" },
+  { levelsId: 1, name: "Smells Like Teen Spirit", artist: "Nirvana" },
+  { levelsId: 1, name: "Californication", artist: "Red Hot Chili Peppers" },
+  { levelsId: 1, name: "While My Guitar Gently Weeps", artist: "The Beatles" },
+  {
+    levelsId: 3,
+    name: "Through the Fire and the Flames",
+    artist: "Dragonforce",
+  },
 ];
 
 const tabs = [
   {
+    levelsId: 1,
     name: "Smells Like Teen Spirit",
     url: "https://www.youtube.com/watch?v=rac0pIyNCfc",
   },
   {
+    levelsId: 1,
     name: "Californication",
     url: "https://www.youtube.com/watch?v=80hkqmEFSWM",
   },
   {
+    levelsId: 1,
     name: "While My Guitar Gently Weeps",
     url: "https://www.youtube.com/watch?v=4Aebj8zw0hE",
   },
   {
+    levelsId: 3,
     name: "Through the Fire and the Flames",
     url: "https://www.youtube.com/watch?v=7FHnSrb1rHk&list=RD7FHnSrb1rHk&start_radio=1",
   },

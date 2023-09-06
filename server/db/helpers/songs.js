@@ -1,6 +1,6 @@
 const client = require("../client");
 
-const createSong = async ({ name, artist }) => {
+const createSong = async ({ levelsId, name, artist }) => {
   try {
     const {
       rows: [song],
@@ -9,11 +9,11 @@ const createSong = async ({ name, artist }) => {
       `
 
         -- comment: this will insert into table as col1,col2,col3
-        INSERT INTO songs(name, artist)
-        VALUES($1, $2)
+        INSERT INTO songs("levelsId", name, artist)
+        VALUES($1, $2, $3)
         RETURNING *;
         `,
-      [name, artist]
+      [levelsId, name, artist]
     );
     return song;
   } catch (error) {
@@ -66,8 +66,9 @@ const updateSong = async (songId, body) => {
   try {
     const { rows } = await client.query(`
       UPDATE songs
-      SET name = '${body.name}',
-      artist = '${body.artist}',
+      SET "levelsId" = '${body.levelsId}',
+      name = '${body.name}',
+      artist = '${body.artist}'
       WHERE "songId" = ${songId}
       RETURNING *;
     `);

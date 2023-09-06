@@ -30,21 +30,22 @@ const createTables = async () => {
     console.log("tables are being created!");
     await client.query(`
     CREATE TABLE levels (
-        "levelId" SERIAL PRIMARY KEY,
+        "levelsId" SERIAL PRIMARY KEY,
         level varchar(50) NOT NULL
 
         
     );
         CREATE TABLE songs (
             "songId" SERIAL PRIMARY KEY,
-            name varchar(255) NOT NULL,
-            artist varchar(255) NOT NULL
+            "levelsId" INTEGER REFERENCES levels("levelsId") NOT NULL,
+            name varchar(255),
+            artist varchar(255) 
+            
 
         );
         CREATE TABLE tabs (
             "tabId" SERIAL PRIMARY KEY,
-            "levelId" INTEGER REFERENCES levels("levelId"),
-            "songId" INTEGER REFERENCES songs("songId"),
+            "levelsId" INTEGER REFERENCES levels("levelsId") NOT NULL,
             name varchar(255) NOT NULL,
             url varchar(255) UNIQUE NOT NULL
         );
@@ -97,9 +98,10 @@ const rebuildDb = async () => {
     await createTables();
 
     // Generate the data
+    await createInitialLevels();
     await createInitialSongs();
     await createInitialTabs();
-    await createInitialLevels();
+
     // await getLevelById();
 
     await getAllSongs();
