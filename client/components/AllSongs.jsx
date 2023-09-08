@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { fetchAllSongs } from "../fetching";
+import { fetchAllSongs, deleteSong } from "../fetching";
 import { useNavigate } from "react-router-dom";
+import CreateSongForm from "./CreateSongForm";
 
 export default function AllSongs() {
   const [songs, setSongs] = useState([]);
@@ -10,13 +11,13 @@ export default function AllSongs() {
   useEffect(() => {
     async function fetchSongs() {
       const response = await fetchAllSongs();
-      await setSongs(response);
+      setSongs(response);
     }
     fetchSongs();
     console.log(songs);
   }, []);
 
-  // to search through songs
+  // to SEARCH through songs
   const songsToDisplay = searchParam
     ? songs.filter(
         (song) =>
@@ -25,7 +26,18 @@ export default function AllSongs() {
       )
     : songs;
 
-  // this maps over all the songs to show each song with level, name, artist and image
+  // DELETE song
+  const handleDelete = async (songId) => {
+    try {
+      await deleteSong(songId);
+      const updatedSongs = await fetchAllSongs();
+      setSongs(updatedSongs);
+    } catch (error) {
+      console.error("trouble deleting song", error);
+    }
+  };
+
+  // this MAPS over all the songs to show each song with level, name, artist and image
   return (
     <div>
       <div>
@@ -36,13 +48,16 @@ export default function AllSongs() {
           onChange={(event) => setSearchParam(event.target.value.toLowerCase())}
         />
       </div>
+      <div>
+        <CreateSongForm setSongs={setSongs} />
+      </div>
       {songsToDisplay.map((song) => {
         return (
           <div key={song.id}>
-            <h4>
-              Level: {song.levelsId} Song: {song.name} Artist: {song.artist}
-            </h4>
-            <img src={song.image} alt={song.name} />
+            <h4 id="song-text">Level: {song.levelsId}</h4>
+            <h4 id="song-text">Song: {song.name}</h4>
+            <h4 id="song-text">Artist: {song.artist}</h4>
+            <img id="image" src={song.image} alt={song.name} />
             <div>
               <button
                 onClick={() => {
@@ -51,6 +66,7 @@ export default function AllSongs() {
               >
                 See Details
               </button>
+              <button onClick={() => handleDelete(song.songId)}>Delete</button>
             </div>
           </div>
         );

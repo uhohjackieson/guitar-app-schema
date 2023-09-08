@@ -10,7 +10,7 @@ export default function SingleTab() {
     // fetch data from API
     try {
       setTab(await fetchSingleTab(params.tabId));
-      // console.log(tab);
+      console.log(tab);
     } catch (err) {
       console.log(err);
     }
@@ -21,7 +21,7 @@ export default function SingleTab() {
 
   return (
     <div key={tab.tabId}>
-      {/* <h4>{tab.name}</h4> */}
+      <h4>{tab.name}</h4>
       <h4>{tab.url}</h4>
     </div>
   );

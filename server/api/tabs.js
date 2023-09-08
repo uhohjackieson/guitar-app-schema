@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { getAllTabs, createTab } = require("../db/helpers/tabs");
+const { getAllTabs, createTab, getTabById } = require("../db/helpers/tabs");
 
 // GET - api/tabs - get all tabs
 router.get("/", async (req, res, next) => {
