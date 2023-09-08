@@ -13,6 +13,16 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+// GET - api/tabs/:tabId - get single tab
+router.get("/:tabId", async (req, res, next) => {
+  try {
+    const song = await getTabById(req.params.tabId);
+    res.send(song);
+  } catch (error) {
+    next(error);
+  }
+});
+
 // POST - api/tabs - post new tab
 router.post("/", async (req, res, next) => {
   try {

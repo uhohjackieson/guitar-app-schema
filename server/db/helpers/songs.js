@@ -1,6 +1,7 @@
 const client = require("../client");
 
-const createSong = async ({ levelsId, name, artist }) => {
+// this creates songs in the db
+const createSong = async ({ levelsId, name, artist, image }) => {
   try {
     const {
       rows: [song],
@@ -9,11 +10,11 @@ const createSong = async ({ levelsId, name, artist }) => {
       `
 
         -- comment: this will insert into table as col1,col2,col3
-        INSERT INTO songs("levelsId", name, artist)
-        VALUES($1, $2, $3)
+        INSERT INTO songs("levelsId", name, artist, image)
+        VALUES($1, $2, $3, $4)
         RETURNING *;
         `,
-      [levelsId, name, artist]
+      [levelsId, name, artist, image]
     );
     return song;
   } catch (error) {
@@ -69,6 +70,7 @@ const updateSong = async (songId, body) => {
       SET "levelsId" = '${body.levelsId}',
       name = '${body.name}',
       artist = '${body.artist}'
+      image = '${body.image}'
       WHERE "songId" = ${songId}
       RETURNING *;
     `);

@@ -16,13 +16,32 @@ const levels = [
 
 // songs/solos
 const songs = [
-  { levelsId: 1, name: "Smells Like Teen Spirit", artist: "Nirvana" },
-  { levelsId: 1, name: "Californication", artist: "Red Hot Chili Peppers" },
-  { levelsId: 1, name: "While My Guitar Gently Weeps", artist: "The Beatles" },
+  {
+    levelsId: 1,
+    name: "Smells Like Teen Spirit",
+    artist: "Nirvana",
+    image: "https://s2.dmcdn.net/v/AbreH1LeixfMKxkxV/x720",
+  },
+  {
+    levelsId: 1,
+    name: "Californication",
+    artist: "Red Hot Chili Peppers",
+    image:
+      "https://upload.wikimedia.org/wikipedia/en/d/df/RedHotChiliPeppersCalifornication.jpg",
+  },
+  {
+    levelsId: 1,
+    name: "While My Guitar Gently Weeps",
+    artist: "The Beatles",
+    image:
+      "https://www.thisdayinmusic.com/wp-content/uploads/2018/05/the-white-album.jpg",
+  },
   {
     levelsId: 3,
     name: "Through the Fire and the Flames",
     artist: "Dragonforce",
+    image:
+      "https://upload.wikimedia.org/wikipedia/en/thumb/a/a3/Df-inhuman-cover250.jpg/220px-Df-inhuman-cover250.jpg",
   },
 ];
 

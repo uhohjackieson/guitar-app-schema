@@ -29,4 +29,19 @@ const getAllTabs = async () => {
   }
 };
 
-module.exports = { createTab, getAllTabs };
+const getTabById = async (tabId) => {
+  try {
+    const {
+      rows: [tabs],
+    } = await client.query(`
+      SELECT * 
+      FROM tabs
+      WHERE "tabId" = ${tabId};
+    `);
+    return tabs;
+  } catch (error) {
+    throw error;
+  }
+};
+
+module.exports = { createTab, getAllTabs, getTabById };

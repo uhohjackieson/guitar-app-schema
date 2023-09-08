@@ -39,7 +39,8 @@ const createTables = async () => {
             "songId" SERIAL PRIMARY KEY,
             "levelsId" INTEGER REFERENCES levels("levelsId") NOT NULL,
             name varchar(255),
-            artist varchar(255) 
+            artist varchar(255),
+            image varchar(255) NOT NULL 
             
 
         );

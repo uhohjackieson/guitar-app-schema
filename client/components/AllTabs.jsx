@@ -3,25 +3,32 @@ import { fetchAllTabs } from "../fetching";
 import { useNavigate } from "react-router-dom";
 
 export default function AllSongs() {
-  const [songs, setSongs] = useState([]);
-  // const navigate = useNavigate();
+  const [tabs, setTabs] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    async function fetchSongs() {
+    async function fetchTabs() {
       const response = await fetchAllTabs();
-      setSongs(response);
+      setTabs(response);
     }
-    fetchSongs();
+    fetchTabs();
   }, []);
 
   return (
     <div>
-      {songs.map((song) => {
+      {tabs.map((tab) => {
         return (
-          <div key={song.id}>
+          <div key={tab.id}>
             <h4>
-              Song: {song.name} URL: {song.url}
+              Level: {tab.levelsId} Song: {tab.name} URL: {tab.url}
             </h4>
+            <button
+              onClick={() => {
+                navigate(`/tabs/${tab.tabId}`);
+              }}
+            >
+              See Details
+            </button>
           </div>
         );
       })}
