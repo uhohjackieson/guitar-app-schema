@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchAllSongs, deleteSong } from "../fetching";
+import { fetchAllSongs, deleteSong, createSong } from "../fetching";
 import { useNavigate } from "react-router-dom";
 import CreateSongForm from "./CreateSongForm";
 
@@ -36,6 +36,16 @@ export default function AllSongs() {
       console.error("trouble deleting song", error);
     }
   };
+
+  // CREATE song
+  // const handleCreate = async (newSong) => {
+  //   try{
+  //     const response = await createSong(newSong);
+  //     setSongs(response);
+  //   } catch(error) {
+  //     console.error(error)
+  //   }
+  // }
 
   // this MAPS over all the songs to show each song with level, name, artist and image
   return (

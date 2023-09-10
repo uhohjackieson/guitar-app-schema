@@ -61,7 +61,6 @@ export async function deleteSong(songId) {
     });
     const result = await response.json();
     console.log(result);
-    // return result;
   } catch (error) {
     console.error("uh oh trouble deleting song", error);
   }

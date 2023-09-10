@@ -1,37 +1,35 @@
 import { useState } from "react";
 import { fetchAllSongs, createSong } from "../fetching";
+// import { create } from "@mui/material/styles/createTransitions";
 
-export default function CreateSongForm({ setSongs }) {
-  const [level, setLevel] = useState(0);
+export default function CreateSongForm({ song, setSong }) {
+  const [level, setLevel] = useState(null);
   const [name, setName] = useState("");
   const [artist, setArtist] = useState("");
   const [image, setImage] = useState("");
+  const [error, setError] = useState(null);
 
-  const submitHandler = (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
-    async function makeSong() {
-      const newSong = {
-        level: level,
-        name: name,
-        artist: artist,
-        image: image,
-      };
-      const result = await createSong(newSong);
-      const updateSongs = await fetchAllSongs();
-      setSongs(updateSongs.song);
-      return result;
-    }
-    makeSong();
+    const API = await createSong(level, name, artist, image);
+    if (API.success) {
+      console.log("New song: ", API.data.newSong);
 
-    setLevel(0);
-    setName("");
-    setArtist("");
-    setImage("");
-  };
+      const newSong = API.data.newSong;
+      setSong((songs) => [...songs, newSong]);
+
+      setLevel(null);
+      setName("");
+      setArtist("");
+      setImage("");
+    } else {
+      setError(API.data.newSong);
+    }
+  }
 
   return (
     <>
-      <form onSubmit={submitHandler}>
+      <form onSubmit={handleSubmit}>
         <input
           placeholder="level"
           value={level}
@@ -52,6 +50,7 @@ export default function CreateSongForm({ setSongs }) {
           value={image}
           onChange={(e) => setImage(e.target.value)}
         />
+
         <button type="submit">Create Song</button>
       </form>
     </>
