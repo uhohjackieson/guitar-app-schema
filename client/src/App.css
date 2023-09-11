@@ -6,10 +6,12 @@
 }
 
 #nav-bar-container {
-  height: 3rem;
   padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+  background-color: #333;
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 #image {
@@ -18,7 +20,15 @@
 }
 
 #song-text {
-  padding: .1rem;
+  padding: 0.1rem;
+}
+
+#all-songs {
+  float: left;
+}
+
+#all-tabs {
+  float: right;
 }
 
 /* .logo {

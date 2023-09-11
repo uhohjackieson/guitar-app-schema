@@ -54,7 +54,8 @@ const tabs = [
   {
     levelsId: 1,
     name: "Californication",
-    url: "https://www.youtube.com/watch?v=80hkqmEFSWM",
+    url: "https://www.youtube.com/embed/80hkqmEFSWM",
+
   },
   {
     levelsId: 1,

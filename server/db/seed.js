@@ -46,9 +46,9 @@ const createTables = async () => {
         );
         CREATE TABLE tabs (
             "tabId" SERIAL PRIMARY KEY,
-            "levelsId" INTEGER REFERENCES levels("levelsId") NOT NULL,
+            "levelsId" INTEGER NOT NULL,
             name varchar(255) NOT NULL,
-            url varchar(255) UNIQUE NOT NULL
+            url varchar(255) NOT NULL
         );
         `);
   } catch (error) {

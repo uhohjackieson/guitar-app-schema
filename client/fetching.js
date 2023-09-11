@@ -89,6 +89,31 @@ export async function createSong(levelsId, name, artist, image) {
   }
 }
 
+// create tabs
+export async function createTab(levelsId, name, url) {
+  console.log("Create tabs:", url);
+  try {
+    const response = await fetch(`${tabsUrl}`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        levelsId,
+        name,
+        url
+      }),
+
+    });
+    console.log("response from fetch", response);
+    const result = await response.json();
+    console.log(result);
+    return result;
+  } catch (error) {
+    console.error("trouble making song", error);
+  }
+}
+
 // update a song
 export async function updateSong(songId, song) {
   try {
