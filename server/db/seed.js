@@ -5,8 +5,9 @@ const client = require("./client");
 const { createSong, getAllSongs } = require("./helpers/songs");
 const { createTab } = require("./helpers/tabs");
 const { createLevel, getLevelById } = require("./helpers/levels");
+const { createUser } = require("./helpers/users");
 // destructuring it so we can pull in each array separately
-const { songs, tabs, levels } = require("./seedData.js");
+const { songs, tabs, levels, users } = require("./seedData.js");
 
 // Drop tables for cleanliness
 const dropTables = async () => {
@@ -14,9 +15,11 @@ const dropTables = async () => {
     console.log("tables dropping!");
     // we are calling upon client connection to make query to db
     await client.query(`
-    DROP TABLE IF EXISTS tabs;
-    DROP TABLE IF EXISTS songs;
-    DROP TABLE IF EXISTS levels;
+
+    DROP TABLE IF EXISTS users cascade;
+    DROP TABLE IF EXISTS tabs cascade;
+    DROP TABLE IF EXISTS songs cascade;
+    DROP TABLE IF EXISTS levels cascade;
         `);
     console.log("tables dropped!");
   } catch (error) {
@@ -29,6 +32,12 @@ const createTables = async () => {
   try {
     console.log("tables are being created!");
     await client.query(`
+    CREATE TABLE users (
+      users_id SERIAL PRIMARY KEY,
+      username varchar(255) UNIQUE NOT NULL,
+      password varchar(255) NOT NULL
+    );
+
     CREATE TABLE levels (
         "levelsId" SERIAL PRIMARY KEY,
         level varchar(50) NOT NULL
@@ -54,6 +63,19 @@ const createTables = async () => {
   } catch (error) {
     throw error;
   }
+};
+
+// Create users
+const createInitialUsers = async () => {
+  try {
+    for (const user of users) {
+      await createUser(user);
+    }
+    console.log("created user");
+  } catch (error) {
+    throw error;
+  }
+  console.log(users);
 };
 
 // insert mock data from seedData.js
@@ -99,6 +121,8 @@ const rebuildDb = async () => {
     await createTables();
 
     // Generate the data
+
+    await createInitialUsers();
     await createInitialLevels();
     await createInitialSongs();
     await createInitialTabs();

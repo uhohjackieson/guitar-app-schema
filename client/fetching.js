@@ -1,6 +1,6 @@
 // song fetch requests
 
-// const baseUrl = "http://localhost:8080/api/";
+const baseUrl = "http://localhost:8080/api";
 const songUrl = "http://localhost:8080/api/songs";
 const tabsUrl = "http://localhost:8080/api/tabs";
 
@@ -101,9 +101,8 @@ export async function createTab(levelsId, name, url) {
       body: JSON.stringify({
         levelsId,
         name,
-        url
+        url,
       }),
-
     });
     console.log("response from fetch", response);
     const result = await response.json();
@@ -129,5 +128,45 @@ export async function updateSong(songId, song) {
     return result;
   } catch (error) {
     console.error("trouble updating song", error);
+  }
+}
+
+export async function loginUser(username, password) {
+  try {
+    const response = await fetch(`${baseUrl}/users/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+      }),
+    });
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function registerUser(username, password) {
+  try {
+    const response = await fetch(`${baseUrl}/users/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+      }),
+    });
+    console.log(response);
+    const result = await response.json();
+    console.log(result);
+    return result;
+  } catch (err) {
+    console.error(err);
   }
 }

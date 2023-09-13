@@ -32,7 +32,6 @@ export default function CreateTabForm({ tab, setTab }) {
       }
     }
 
-
     const finalUrl = urlConverter(url);
     console.log(finalUrl);
 

@@ -1,11 +1,11 @@
 // Make some arrays of objects based on schema design
 
 // users
-// const users = [
-//     {username: 'kiss_my_axe', password: 'bruh', email: ''},
-//     {username: 'myfavesongiswonderwall', password: 'troll', email: ''},
-//     {username: 'i<3geetars', password: 'askmeaboutmygeetar', email: ''}
-// ]
+const users = [
+    {username: 'kiss_my_axe', password: 'bruh'},
+    {username: 'myfavesongiswonderwall', password: 'troll'},
+    {username: 'i<3geetars', password: 'askmeaboutmygeetar'}
+]
 
 // level
 const levels = [
@@ -49,24 +49,25 @@ const tabs = [
   {
     levelsId: 1,
     name: "Smells Like Teen Spirit",
-    url: "https://www.youtube.com/watch?v=rac0pIyNCfc",
+    url: "https://www.youtube.com/embed/bUUCN4mBV7c",
   },
+
   {
     levelsId: 1,
     name: "Californication",
     url: "https://www.youtube.com/embed/80hkqmEFSWM",
-
   },
   {
     levelsId: 1,
     name: "While My Guitar Gently Weeps",
-    url: "https://www.youtube.com/watch?v=4Aebj8zw0hE",
+    url: "https://www.youtube.com/embed/4Aebj8zw0hE",
   },
+
   {
     levelsId: 3,
     name: "Through the Fire and the Flames",
-    url: "https://www.youtube.com/watch?v=7FHnSrb1rHk&list=RD7FHnSrb1rHk&start_radio=1",
+    url: "https://www.youtube.com/embed/bqFMr-5FYjE",
   },
 ];
 
-module.exports = { songs, levels, tabs };
+module.exports = { songs, levels, tabs, users };
