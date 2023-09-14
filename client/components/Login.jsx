@@ -31,6 +31,7 @@ export default function Login({ setToken }) {
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
+          id="password"
           placeholder="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}

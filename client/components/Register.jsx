@@ -25,11 +25,14 @@ export default function Register({ setToken }) {
 
       <form onSubmit={handleSubmit}>
         <input
+          id="username"
+          autoFocus
           placeholder="username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
+          id="password"
           placeholder="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}

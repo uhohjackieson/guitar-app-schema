@@ -31,6 +31,8 @@ export default function CreateSongForm({ song, setSong }) {
     <>
       <form onSubmit={handleSubmit}>
         <input
+          id="level"
+          autoFocus
           placeholder="level"
           value={level}
           onChange={(e) => setLevel(e.target.value)}

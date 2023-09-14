@@ -10,7 +10,7 @@ export default function SingleSong() {
     // fetch data from API
     try {
       setSong(await fetchSingleSong(params.songId));
-      console.log(song)
+      console.log(song);
     } catch (err) {
       console.log(err);
     }
